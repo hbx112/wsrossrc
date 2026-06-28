@@ -19,9 +19,9 @@
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp/executors/multi_threaded_executor.hpp> 
 #include "lslidar_driver/lslidar_driver.hpp"
-#include "lslidar_driver/lslidar_cx_driver.hpp"
-#include "lslidar_driver/lslidar_ch_driver.hpp"
-#include "lslidar_driver/lslidar_ls_driver.hpp"
+// #include "lslidar_driver/lslidar_cx_driver.hpp"
+// #include "lslidar_driver/lslidar_ch_driver.hpp"
+// #include "lslidar_driver/lslidar_ls_driver.hpp"
 #include "lslidar_driver/lslidar_x10_driver.hpp"
 
 using namespace lslidar_driver;
@@ -47,13 +47,7 @@ int main(int argc, char** argv) {
     std::shared_ptr<lslidar_driver::LslidarDriver> driver;
 
     try {
-        if (lidar_type == "CX") {
-            driver = std::make_shared<lslidar_driver::LslidarCxDriver>(node);
-        } else if (lidar_type == "CH") {
-            driver = std::make_shared<lslidar_driver::LslidarChDriver>(node);
-        } else if (lidar_type == "LS") {
-            driver = std::make_shared<lslidar_driver::LslidarLsDriver>(node);
-        } else if (lidar_type == "X10") {
+        if (lidar_type == "X10") {
             driver = std::make_shared<lslidar_driver::LslidarX10Driver>(node);
         } else {
             LS_ERROR << "Invalid lidar type configured: '" << lidar_type 
